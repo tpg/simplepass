@@ -1,0 +1,39 @@
+{
+    "name": "thepublicgood/simplepass",
+    "description": "A really simple way to keep a Laravel site private",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "THEPUBLICGOOD",
+            "email": "makers@thepublicgood.dev"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "TPG\\Simple\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TPG\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.0",
+        "laravel/framework": "^8.50"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.22",
+        "phpunit/phpunit": "^9.5",
+        "roave/security-advisories": "dev-latest"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TPG\\Simple\\ServiceProvider"
+            ]
+        }
+    }
+}
