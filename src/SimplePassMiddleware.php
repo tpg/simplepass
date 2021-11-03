@@ -18,7 +18,7 @@ class SimplePassMiddleware
 
     public function handle(Request $request, Closure $next): mixed
     {
-        if (config('simplepass.enabled')) {
+        if ($this->simplePass->enabled()) {
             if ($request->has('logout')) {
                 $this->simplePass->logout($request);
 

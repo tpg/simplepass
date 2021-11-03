@@ -46,6 +46,11 @@ class SimplePass implements SimplePassInterface
         Cookie::expire($this->cookieName());
     }
 
+    public function enabled(): bool
+    {
+        return config('simplepass.secret') && config('simplepass.enabled');
+    }
+
     protected function cookieName(): string
     {
         return 'simple-pass-auth';
@@ -54,7 +59,7 @@ class SimplePass implements SimplePassInterface
     public function bootRoutes(): void
     {
         Route::get('simplepass/auth', function (Request $request) {
-            if (! config('simplepass.enabled')) {
+            if (! $this->enabled()) {
                 $this->logout($request);
 
                 return redirect()->to(config('simplepass.redirect'));

@@ -14,5 +14,7 @@ interface SimplePassInterface
 
     public function logout(Request $request): void;
 
+    public function enabled(): bool;
+
     public function bootRoutes(): void;
 }
