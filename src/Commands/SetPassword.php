@@ -25,7 +25,7 @@ class SetPassword extends Command
         preg_match($this->keyReplacementPattern(), $env, $matches);
 
         if (! count($matches)) {
-            $env.=PHP_EOL.'SIMPLE_SECRET=';
+            $env .= PHP_EOL.'SIMPLE_SECRET=';
         }
 
         $set = preg_replace(
