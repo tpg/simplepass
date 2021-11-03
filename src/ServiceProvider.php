@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace TPG\Simple;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use TPG\Simple\Commands\SetPassword;
 use TPG\Simple\Contracts\SimplePassInterface;

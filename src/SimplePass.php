@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace TPG\Simple;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
-use Illuminate\Testing\Fluent\Concerns\Has;
 use TPG\Simple\Contracts\SimplePassInterface;
 
 class SimplePass implements SimplePassInterface
@@ -28,6 +25,7 @@ class SimplePass implements SimplePassInterface
 
         if (Hash::check($password, $hash)) {
             Cookie::queue($this->cookieName(), $password, config('simplepass.duration'));
+
             return true;
         }
 
@@ -70,11 +68,8 @@ class SimplePass implements SimplePassInterface
         })->name('simplepass.login');
 
         Route::post('simplepass/auth', function (Request $request) {
-
             if ($this->attempt($request)) {
-
                 return redirect()->intended()->withCookies(Cookie::getQueuedCookies());
-
             }
 
             return redirect()->route('simplepass.login');

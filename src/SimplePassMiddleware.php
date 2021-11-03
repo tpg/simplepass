@@ -7,7 +7,6 @@ namespace TPG\Simple;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use TPG\Simple\Contracts\SimplePassInterface;
 
@@ -20,7 +19,6 @@ class SimplePassMiddleware
     public function handle(Request $request, Closure $next): mixed
     {
         if (config('simplepass.enabled')) {
-
             if ($request->has('logout')) {
                 $this->simplePass->logout($request);
 
@@ -28,7 +26,6 @@ class SimplePassMiddleware
             }
 
             if (! $this->simplePass->check($request)) {
-
                 Redirect::setIntendedUrl($request->url());
 
                 return redirect()->route('simplepass.login');
