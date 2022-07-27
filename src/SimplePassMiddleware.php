@@ -14,7 +14,6 @@ class SimplePassMiddleware
 {
     public function __construct(protected SimplePassInterface $simplePass)
     {
-
     }
 
     public function handle(Request $request, Closure $next): mixed

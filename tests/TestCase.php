@@ -28,6 +28,4 @@ class TestCase extends OrchestraTestCase
         $app['config']->set('simplepass.enabled', true);
         $app['config']->set('simplepass.secret', '$2y$10$jLOBQdxWtjyn6epJFZSLJe7RJtYwzAi8/DxpntbghRW/LPc//JkzG');   //password
     }
-
-
 }
