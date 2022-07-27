@@ -46,6 +46,15 @@ class SimplePass implements SimplePassInterface
         Cookie::expire($this->cookieName());
     }
 
+    public function shouldIgnore(Request $request): bool
+    {
+        if (! config('simplepass.ignore')) {
+            return false;
+        }
+
+        return $request->fullUrlIs(config('simplepass.ignore'));
+    }
+
     public function enabled(): bool
     {
         return config('simplepass.secret') && config('simplepass.enabled');

@@ -17,8 +17,6 @@ class SetPassword extends Command
     {
         $hash = Hash::make($this->argument('password'));
 
-        $this->info('Hash: '.$hash);
-
         $password = 'base64:'.base64_encode($hash);
 
         $env = file_get_contents($this->laravel->environmentFilePath());

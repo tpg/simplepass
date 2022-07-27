@@ -12,6 +12,11 @@ return [
      */
     'secret' => env('SIMPLE_SECRET'),
 
+    /*
+     * Ignore these URLs. Simple pass will not be enabled for these URLs.
+     */
+    'ignore' => [],
+
     /**
      * The expiration of the cookie in minutes.
      */

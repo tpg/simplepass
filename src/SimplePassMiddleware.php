@@ -14,10 +14,15 @@ class SimplePassMiddleware
 {
     public function __construct(protected SimplePassInterface $simplePass)
     {
+
     }
 
     public function handle(Request $request, Closure $next): mixed
     {
+        if ($this->simplePass->shouldIgnore($request)) {
+            return $next($request);
+        }
+
         if ($this->simplePass->enabled()) {
             if ($request->has('logout')) {
                 $this->simplePass->logout($request);
