@@ -6,7 +6,6 @@ namespace TPG\Tests;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use TPG\Simple\Contracts\SimplePassInterface;
 use TPG\Simple\SimplePassMiddleware;
 
@@ -24,7 +23,8 @@ class MiddlewareTest extends TestCase
         /**
          * @var RedirectResponse $response
          */
-        $response = $middleware->handle($request, function () {});
+        $response = $middleware->handle($request, function () {
+        });
 
         $this->assertTrue($response->isRedirect(url('simplepass/auth')));
     }
@@ -35,7 +35,5 @@ class MiddlewareTest extends TestCase
     public function simeple_test(): void
     {
         $response = $this->withMiddleware(SimplePassMiddleware::class)->withCookie('simple-pass-auth', config('simplepass.secret'))->get('/');
-
-
     }
 }
